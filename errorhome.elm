@@ -1,5 +1,6 @@
 import Html exposing (..)
 import Html.App as App
+import Html.Attributes exposing (..)
 --import Html.Events exposing (..)
 --import Random exposing (..)
 
@@ -43,5 +44,8 @@ init = (Model 200 "OK", Cmd.none)
 
 view : Model -> Html Msg
 view model = div []
-    [ h1 [] [ text model.etitle ] ]
-    
+    [ h1 [] [ text model.etitle ]
+    , br [] []
+    , br [] []
+    , hr [] []
+    ]
