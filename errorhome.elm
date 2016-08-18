@@ -83,7 +83,7 @@ view model =
         div [] [ ]
     else
         div []
-        [ h1 [] <| mkTitle model.etitle
+        [ h1 [] <| mkTitle model
         , br [] []
         , text model.emessage
         , br [] []
@@ -91,18 +91,15 @@ view model =
         , bodySecond
         ]
 
-mkTitle : String -> List (Html Msg)
-mkTitle s =
-    case uncons s of
-        Just (x, xs) ->
-            a
-            [ tytleStyle
-            , target "_blank"
-            , href "http://michaegon.jp/cgi/jump.cgi?index=3810954172703717506"
-            ]
-            [ text <| fromChar x ] :: mkTitle xs
-        _ ->
-            []
+mkTitle : Model -> List (Html Msg)
+mkTitle model =
+    List.map2 (\x y ->
+        a
+        [ tytleStyle
+        , target "_blank"
+        , href <| url "http://michaegon.jp/cgi/jump.cgi" [("index",toString y)]
+        ]
+        [ text <| fromChar x]) (toList model.etitle) model.rands
 
 bodySecond : Html Msg
 bodySecond = div [footerStyle]

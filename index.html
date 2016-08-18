@@ -9012,29 +9012,38 @@ var _user$project$Error$bodySecond = A2(
 		[
 			_elm_lang$html$Html$text('Apache/')
 		]));
-var _user$project$Error$mkTitle = function (s) {
-	var _p0 = _elm_lang$core$String$uncons(s);
-	if ((_p0.ctor === 'Just') && (_p0._0.ctor === '_Tuple2')) {
-		return A2(
-			_elm_lang$core$List_ops['::'],
-			A2(
-				_elm_lang$html$Html$a,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_user$project$Error$tytleStyle,
-						_elm_lang$html$Html_Attributes$target('_blank'),
-						_elm_lang$html$Html_Attributes$href('http://michaegon.jp/cgi/jump.cgi?index=3810954172703717506')
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html$text(
-						_elm_lang$core$String$fromChar(_p0._0._0))
-					])),
-			_user$project$Error$mkTitle(_p0._0._1));
-	} else {
-		return _elm_lang$core$Native_List.fromArray(
-			[]);
-	}
+var _user$project$Error$mkTitle = function (model) {
+	return A3(
+		_elm_lang$core$List$map2,
+		F2(
+			function (x, y) {
+				return A2(
+					_elm_lang$html$Html$a,
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_user$project$Error$tytleStyle,
+							_elm_lang$html$Html_Attributes$target('_blank'),
+							_elm_lang$html$Html_Attributes$href(
+							A2(
+								_evancz$elm_http$Http$url,
+								'http://michaegon.jp/cgi/jump.cgi',
+								_elm_lang$core$Native_List.fromArray(
+									[
+										{
+										ctor: '_Tuple2',
+										_0: 'index',
+										_1: _elm_lang$core$Basics$toString(y)
+									}
+									])))
+						]),
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$html$Html$text(
+							_elm_lang$core$String$fromChar(x))
+						]));
+			}),
+		_elm_lang$core$String$toList(model.etitle),
+		model.rands);
 };
 var _user$project$Error$view = function (model) {
 	return _elm_lang$core$Native_Utils.eq(model.ecode, 0) ? A2(
@@ -9052,7 +9061,7 @@ var _user$project$Error$view = function (model) {
 				_elm_lang$html$Html$h1,
 				_elm_lang$core$Native_List.fromArray(
 					[]),
-				_user$project$Error$mkTitle(model.etitle)),
+				_user$project$Error$mkTitle(model)),
 				A2(
 				_elm_lang$html$Html$br,
 				_elm_lang$core$Native_List.fromArray(
@@ -9090,20 +9099,20 @@ var _user$project$Error$SetRands = function (a) {
 };
 var _user$project$Error$update = F2(
 	function (msg, model) {
-		var _p1 = msg;
-		switch (_p1.ctor) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
 			case 'SetCode':
-				var _p2 = A2(_elm_lang$core$Array$get, _p1._0, _user$project$Error$codes);
-				if ((_p2.ctor === 'Just') && (_p2._0.ctor === '_Tuple3')) {
-					var _p3 = _p2._0._1;
+				var _p1 = A2(_elm_lang$core$Array$get, _p0._0, _user$project$Error$codes);
+				if ((_p1.ctor === 'Just') && (_p1._0.ctor === '_Tuple3')) {
+					var _p2 = _p1._0._1;
 					var intgen = A2(_elm_lang$core$Random$int, _elm_lang$core$Random$minInt, _elm_lang$core$Random$maxInt);
-					var l = _elm_lang$core$String$length(_p3);
+					var l = _elm_lang$core$String$length(_p2);
 					var g = A2(_elm_lang$core$Random$list, l, intgen);
 					return {
 						ctor: '_Tuple2',
 						_0: _elm_lang$core$Native_Utils.update(
 							model,
-							{ecode: _p2._0._0, etitle: _p3, emessage: _p2._0._2}),
+							{ecode: _p1._0._0, etitle: _p2, emessage: _p1._0._2}),
 						_1: A2(_elm_lang$core$Random$generate, _user$project$Error$SetRands, g)
 					};
 				} else {
@@ -9114,7 +9123,7 @@ var _user$project$Error$update = F2(
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
-						{rands: _p1._0}),
+						{rands: _p0._0}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 			default:
