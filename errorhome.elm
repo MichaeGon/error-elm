@@ -5,7 +5,6 @@ import Html exposing (..)
 import Html.App as App
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
---import Http exposing (..)
 import Random
 import String exposing (..)
 
@@ -109,17 +108,6 @@ mkTitle model = model.etitle
         ]
         [ text <| fromChar x]
         )
-{-}
-mkTitle model =
-    List.map2 (\x y ->
-        a
-        [ tytleStyle
-        , target "_blank"
-        , href <| url "http://michaegon.jp/cgi/jump.cgi" [("index",toString y)]
-        , onClick Reset
-        ]
-        [ text <| fromChar x]) (toList model.etitle) model.rands
--}
 
 bodySecond : Model -> Html Msg
 bodySecond model = div [footerStyle]
