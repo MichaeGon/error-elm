@@ -4,7 +4,7 @@ import Array
 import Html exposing (..)
 import Html.App as App
 import Html.Attributes exposing (..)
---import Html.Events exposing (..)
+import Html.Events exposing (..)
 import Http exposing (..)
 import Random
 import String exposing (..)
@@ -33,13 +33,16 @@ type alias Model =
 -- update
 
 type Msg
-    = SetCode Int
+    = GenRandom
+    | SetCode Int
     | SetRands (List Int)
     | Set (Int, Int, Int)
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
     case msg of
+        GenRandom ->
+            (model, setcode)
         SetCode n ->
             case Array.get n codes of
                 Just (c, t, m) ->
@@ -52,9 +55,23 @@ update msg model =
                 _ ->
                     (model, Cmd.none)
         SetRands xs ->
-                ({model | rands = xs}, Cmd.none)
-        Set _ ->
-            (model, Cmd.none)
+            let
+                l = Array.length oss - 1
+                vergen = Random.int 100 999
+                osgen = Random.int 0 l
+                portgen = Random.int 0 9999
+                gen = Random.map3 (,,) vergen osgen portgen
+            in
+                ({model | rands = xs}, Random.generate Set gen)
+        Set (v, n, p) ->
+            case Array.get n oss of
+                Just name ->
+                    let
+                        ver = fromList <| List.intersperse '.' <| toList <| toString v
+                    in
+                        ({model | apache = ver, os = name, portNum = p}, Cmd.none)
+                _ ->
+                    (model, Cmd.none)
 
 -- cmd setcode
 setcode : Cmd Msg
@@ -88,7 +105,7 @@ view model =
         , text model.emessage
         , br [] []
         , hr [] []
-        , bodySecond
+        , bodySecond model
         ]
 
 mkTitle : Model -> List (Html Msg)
@@ -98,12 +115,13 @@ mkTitle model =
         [ tytleStyle
         , target "_blank"
         , href <| url "http://michaegon.jp/cgi/jump.cgi" [("index",toString y)]
+        , onClick GenRandom
         ]
         [ text <| fromChar x]) (toList model.etitle) model.rands
 
-bodySecond : Html Msg
-bodySecond = div [footerStyle]
-    [ text "Apache/"]
+bodySecond : Model -> Html Msg
+bodySecond model = div [footerStyle]
+    [ text <| "Apache/" ++ model.apache ++ " (" ++ model.os ++ ") Server at michaegon.jp" ]
 
 
 -- styles
@@ -166,4 +184,81 @@ codes = Array.fromList
     , (504, "Gateway Timeout", "")
     , (505, "HTTP Version Not Supported", "")
     , (506, "Variant Also Varies", "A variant for the requested entity is itself a negotiable resource. Access not possible.")
+    ]
+
+oss : Array.Array String
+oss = Array.fromList
+    [ "ARMA aka Omoikane GNU/Linux"
+    , "aptosid"
+    , "Kali Linux"
+    , "KANOTIX"
+    , "KNOPPIX"
+    , "MEPIS"
+    , "SteamOS"
+    , "Ubuntu"
+    , "Corel Linux"
+    , "Linspire"
+    , "Progeny Debian"
+    , "UserLinux"
+    , "Damn Small Linux"
+    , "gOS"
+    , "Regret"
+    , "Xenoppix"
+    , "BackTrack"
+    , "Fluxbuntu"
+    , "Fedora"
+    , "Red Hat Enterprise Linux"
+    , "Asianux"
+    , "Haansoft Linux"
+    , "MIRACLE LINUX"
+    , "Red Flag Linux"
+    , "CentOS"
+    , "Scientific Linux"
+    , "StartCom Linux"
+    , "Yellow Dog Linux"
+    , "Berry Linux"
+    , "Red Star OS"
+    , "Mandriva Linux"
+    , "PCLinuxOS"
+    , "Momonga Linux"
+    , "Vine Linux"
+    , "RedHawk Linux"
+    , "Caldera OpenLinux"
+    , "HOLON Linux"
+    , "Kondara MNU/Linux"
+    , "LASER5 Linux"
+    , "Lycoris Desktop/LX"
+    , "PS2 Linux"
+    , "Red Hat Linux"
+    , "White Box EnterPrise Linux"
+    , "Slackware"
+    , "Plamo Linux"
+    , "Puppy Linux"
+    , "Slamd64"
+    , "SLAX"
+    , "openSUSE"
+    , "United Linux"
+    , "Wolvix"
+    , "Arch Linux"
+    , "Manjaro Linux"
+    , "Foresight Linux"
+    , "Gentoo Linux"
+    , "Google Chrome OS"
+    , "Sabayon Linux"
+    , "IPnuts"
+    , "Nature's Linux"
+    , "Omaemona 2ch/Linux"
+    , "Turbolinux"
+    , "iPodLinux"
+    , "SliTaz"
+    , "Tiny Core Linux"
+    , "MkLinux"
+    , "SLS"
+    , "Stataboware"
+    , "Splashtop"
+    , "Mac OS X Server"
+    , "Darwin"
+    , "iOS"
+    , "MS-DOS"
+    , "Windows Server 2012"
     ]

@@ -8590,6 +8590,106 @@ var _elm_lang$html$Html_Attributes$classList = function (list) {
 				A2(_elm_lang$core$List$filter, _elm_lang$core$Basics$snd, list))));
 };
 var _elm_lang$html$Html_Attributes$style = _elm_lang$virtual_dom$VirtualDom$style;
+var _elm_lang$html$Html_Events$keyCode = A2(_elm_lang$core$Json_Decode_ops[':='], 'keyCode', _elm_lang$core$Json_Decode$int);
+var _elm_lang$html$Html_Events$targetChecked = A2(
+	_elm_lang$core$Json_Decode$at,
+	_elm_lang$core$Native_List.fromArray(
+		['target', 'checked']),
+	_elm_lang$core$Json_Decode$bool);
+var _elm_lang$html$Html_Events$targetValue = A2(
+	_elm_lang$core$Json_Decode$at,
+	_elm_lang$core$Native_List.fromArray(
+		['target', 'value']),
+	_elm_lang$core$Json_Decode$string);
+var _elm_lang$html$Html_Events$defaultOptions = _elm_lang$virtual_dom$VirtualDom$defaultOptions;
+var _elm_lang$html$Html_Events$onWithOptions = _elm_lang$virtual_dom$VirtualDom$onWithOptions;
+var _elm_lang$html$Html_Events$on = _elm_lang$virtual_dom$VirtualDom$on;
+var _elm_lang$html$Html_Events$onFocus = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'focus',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onBlur = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'blur',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onSubmitOptions = _elm_lang$core$Native_Utils.update(
+	_elm_lang$html$Html_Events$defaultOptions,
+	{preventDefault: true});
+var _elm_lang$html$Html_Events$onSubmit = function (msg) {
+	return A3(
+		_elm_lang$html$Html_Events$onWithOptions,
+		'submit',
+		_elm_lang$html$Html_Events$onSubmitOptions,
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onCheck = function (tagger) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'change',
+		A2(_elm_lang$core$Json_Decode$map, tagger, _elm_lang$html$Html_Events$targetChecked));
+};
+var _elm_lang$html$Html_Events$onInput = function (tagger) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'input',
+		A2(_elm_lang$core$Json_Decode$map, tagger, _elm_lang$html$Html_Events$targetValue));
+};
+var _elm_lang$html$Html_Events$onMouseOut = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseout',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseOver = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseover',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseLeave = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseleave',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseEnter = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseenter',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseUp = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mouseup',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onMouseDown = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'mousedown',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onDoubleClick = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'dblclick',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$onClick = function (msg) {
+	return A2(
+		_elm_lang$html$Html_Events$on,
+		'click',
+		_elm_lang$core$Json_Decode$succeed(msg));
+};
+var _elm_lang$html$Html_Events$Options = F2(
+	function (a, b) {
+		return {stopPropagation: a, preventDefault: b};
+	});
 //import Dict, List, Maybe, Native.Scheduler //
 
 var _evancz$elm_http$Native_Http = function() {
@@ -8946,6 +9046,9 @@ var _evancz$elm_http$Http$post = F3(
 			decoder,
 			A2(_evancz$elm_http$Http$send, _evancz$elm_http$Http$defaultSettings, request));
 	});
+var _user$project$Error$oss = _elm_lang$core$Array$fromList(
+	_elm_lang$core$Native_List.fromArray(
+		['ARMA aka Omoikane GNU/Linux', 'aptosid', 'Kali Linux', 'KANOTIX', 'KNOPPIX', 'MEPIS', 'SteamOS', 'Ubuntu', 'Corel Linux', 'Linspire', 'Progeny Debian', 'UserLinux', 'Damn Small Linux', 'gOS', 'Regret', 'Xenoppix', 'BackTrack', 'Fluxbuntu', 'Fedora', 'Red Hat Enterprise Linux', 'Asianux', 'Haansoft Linux', 'MIRACLE LINUX', 'Red Flag Linux', 'CentOS', 'Scientific Linux', 'StartCom Linux', 'Yellow Dog Linux', 'Berry Linux', 'Red Star OS', 'Mandriva Linux', 'PCLinuxOS', 'Momonga Linux', 'Vine Linux', 'RedHawk Linux', 'Caldera OpenLinux', 'HOLON Linux', 'Kondara MNU/Linux', 'LASER5 Linux', 'Lycoris Desktop/LX', 'PS2 Linux', 'Red Hat Linux', 'White Box EnterPrise Linux', 'Slackware', 'Plamo Linux', 'Puppy Linux', 'Slamd64', 'SLAX', 'openSUSE', 'United Linux', 'Wolvix', 'Arch Linux', 'Manjaro Linux', 'Foresight Linux', 'Gentoo Linux', 'Google Chrome OS', 'Sabayon Linux', 'IPnuts', 'Nature\'s Linux', 'Omaemona 2ch/Linux', 'Turbolinux', 'iPodLinux', 'SliTaz', 'Tiny Core Linux', 'MkLinux', 'SLS', 'Stataboware', 'Splashtop', 'Mac OS X Server', 'Darwin', 'iOS', 'MS-DOS', 'Windows Server 2012']));
 var _user$project$Error$codes = _elm_lang$core$Array$fromList(
 	_elm_lang$core$Native_List.fromArray(
 		[
@@ -9004,14 +9107,127 @@ var _user$project$Error$tytleStyle = _elm_lang$html$Html_Attributes$style(
 			{ctor: '_Tuple2', _0: 'text-decoration', _1: 'none'},
 			{ctor: '_Tuple2', _0: 'color', _1: 'black'}
 		]));
-var _user$project$Error$bodySecond = A2(
-	_elm_lang$html$Html$div,
-	_elm_lang$core$Native_List.fromArray(
-		[_user$project$Error$footerStyle]),
-	_elm_lang$core$Native_List.fromArray(
-		[
-			_elm_lang$html$Html$text('Apache/')
-		]));
+var _user$project$Error$bodySecond = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		_elm_lang$core$Native_List.fromArray(
+			[_user$project$Error$footerStyle]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$html$Html$text(
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					'Apache/',
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						model.apache,
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							' (',
+							A2(_elm_lang$core$Basics_ops['++'], model.os, ') Server at michaegon.jp')))))
+			]));
+};
+var _user$project$Error$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$Error$Model = F7(
+	function (a, b, c, d, e, f, g) {
+		return {ecode: a, etitle: b, emessage: c, rands: d, apache: e, os: f, portNum: g};
+	});
+var _user$project$Error$Set = function (a) {
+	return {ctor: 'Set', _0: a};
+};
+var _user$project$Error$SetRands = function (a) {
+	return {ctor: 'SetRands', _0: a};
+};
+var _user$project$Error$SetCode = function (a) {
+	return {ctor: 'SetCode', _0: a};
+};
+var _user$project$Error$setcode = function () {
+	var l = _elm_lang$core$Array$length(_user$project$Error$codes) - 1;
+	var g = A2(_elm_lang$core$Random$int, 0, l);
+	return A2(_elm_lang$core$Random$generate, _user$project$Error$SetCode, g);
+}();
+var _user$project$Error$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'GenRandom':
+				return {ctor: '_Tuple2', _0: model, _1: _user$project$Error$setcode};
+			case 'SetCode':
+				var _p1 = A2(_elm_lang$core$Array$get, _p0._0, _user$project$Error$codes);
+				if ((_p1.ctor === 'Just') && (_p1._0.ctor === '_Tuple3')) {
+					var _p2 = _p1._0._1;
+					var intgen = A2(_elm_lang$core$Random$int, _elm_lang$core$Random$minInt, _elm_lang$core$Random$maxInt);
+					var l = _elm_lang$core$String$length(_p2);
+					var g = A2(_elm_lang$core$Random$list, l, intgen);
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{ecode: _p1._0._0, etitle: _p2, emessage: _p1._0._2}),
+						_1: A2(_elm_lang$core$Random$generate, _user$project$Error$SetRands, g)
+					};
+				} else {
+					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+				}
+			case 'SetRands':
+				var portgen = A2(_elm_lang$core$Random$int, 0, 9999);
+				var vergen = A2(_elm_lang$core$Random$int, 100, 999);
+				var l = _elm_lang$core$Array$length(_user$project$Error$oss) - 1;
+				var osgen = A2(_elm_lang$core$Random$int, 0, l);
+				var gen = A4(
+					_elm_lang$core$Random$map3,
+					F3(
+						function (v0, v1, v2) {
+							return {ctor: '_Tuple3', _0: v0, _1: v1, _2: v2};
+						}),
+					vergen,
+					osgen,
+					portgen);
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{rands: _p0._0}),
+					_1: A2(_elm_lang$core$Random$generate, _user$project$Error$Set, gen)
+				};
+			default:
+				var _p3 = A2(_elm_lang$core$Array$get, _p0._0._1, _user$project$Error$oss);
+				if (_p3.ctor === 'Just') {
+					var ver = _elm_lang$core$String$fromList(
+						A2(
+							_elm_lang$core$List$intersperse,
+							_elm_lang$core$Native_Utils.chr('.'),
+							_elm_lang$core$String$toList(
+								_elm_lang$core$Basics$toString(_p0._0._0))));
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{apache: ver, os: _p3._0, portNum: _p0._0._2}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+				}
+		}
+	});
+var _user$project$Error$init = {
+	ctor: '_Tuple2',
+	_0: A7(
+		_user$project$Error$Model,
+		0,
+		'',
+		'',
+		_elm_lang$core$Native_List.fromArray(
+			[]),
+		'',
+		'',
+		0),
+	_1: _user$project$Error$setcode
+};
+var _user$project$Error$GenRandom = {ctor: 'GenRandom'};
 var _user$project$Error$mkTitle = function (model) {
 	return A3(
 		_elm_lang$core$List$map2,
@@ -9034,7 +9250,8 @@ var _user$project$Error$mkTitle = function (model) {
 										_0: 'index',
 										_1: _elm_lang$core$Basics$toString(y)
 									}
-									])))
+									]))),
+							_elm_lang$html$Html_Events$onClick(_user$project$Error$GenRandom)
 						]),
 					_elm_lang$core$Native_List.fromArray(
 						[
@@ -9081,76 +9298,8 @@ var _user$project$Error$view = function (model) {
 					[]),
 				_elm_lang$core$Native_List.fromArray(
 					[])),
-				_user$project$Error$bodySecond
+				_user$project$Error$bodySecond(model)
 			]));
-};
-var _user$project$Error$subscriptions = function (model) {
-	return _elm_lang$core$Platform_Sub$none;
-};
-var _user$project$Error$Model = F7(
-	function (a, b, c, d, e, f, g) {
-		return {ecode: a, etitle: b, emessage: c, rands: d, apache: e, os: f, portNum: g};
-	});
-var _user$project$Error$Set = function (a) {
-	return {ctor: 'Set', _0: a};
-};
-var _user$project$Error$SetRands = function (a) {
-	return {ctor: 'SetRands', _0: a};
-};
-var _user$project$Error$update = F2(
-	function (msg, model) {
-		var _p0 = msg;
-		switch (_p0.ctor) {
-			case 'SetCode':
-				var _p1 = A2(_elm_lang$core$Array$get, _p0._0, _user$project$Error$codes);
-				if ((_p1.ctor === 'Just') && (_p1._0.ctor === '_Tuple3')) {
-					var _p2 = _p1._0._1;
-					var intgen = A2(_elm_lang$core$Random$int, _elm_lang$core$Random$minInt, _elm_lang$core$Random$maxInt);
-					var l = _elm_lang$core$String$length(_p2);
-					var g = A2(_elm_lang$core$Random$list, l, intgen);
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{ecode: _p1._0._0, etitle: _p2, emessage: _p1._0._2}),
-						_1: A2(_elm_lang$core$Random$generate, _user$project$Error$SetRands, g)
-					};
-				} else {
-					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
-				}
-			case 'SetRands':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{rands: _p0._0}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			default:
-				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
-		}
-	});
-var _user$project$Error$SetCode = function (a) {
-	return {ctor: 'SetCode', _0: a};
-};
-var _user$project$Error$setcode = function () {
-	var l = _elm_lang$core$Array$length(_user$project$Error$codes) - 1;
-	var g = A2(_elm_lang$core$Random$int, 0, l);
-	return A2(_elm_lang$core$Random$generate, _user$project$Error$SetCode, g);
-}();
-var _user$project$Error$init = {
-	ctor: '_Tuple2',
-	_0: A7(
-		_user$project$Error$Model,
-		0,
-		'',
-		'',
-		_elm_lang$core$Native_List.fromArray(
-			[]),
-		'',
-		'',
-		0),
-	_1: _user$project$Error$setcode
 };
 var _user$project$Error$main = {
 	main: _elm_lang$html$Html_App$program(
