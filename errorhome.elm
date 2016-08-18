@@ -121,7 +121,7 @@ mkTitle model =
 
 bodySecond : Model -> Html Msg
 bodySecond model = div [footerStyle]
-    [ text <| "Apache/" ++ model.apache ++ " (" ++ model.os ++ ") Server at michaegon.jp" ]
+    [ text <| "Apache/" ++ model.apache ++ " (" ++ model.os ++ ") Server at michaegon.jp Port " ++ toString model.portNum]
 
 
 -- styles

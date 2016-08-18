@@ -1,4 +1,3 @@
-# Error Home
-=============
+#Error Home
 
 cgiじゃなくなったのです
