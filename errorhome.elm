@@ -5,7 +5,7 @@ import Html exposing (..)
 import Html.App as App
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import Random
+import Random exposing (..)
 import String exposing (..)
 
 main : Program Never
@@ -72,14 +72,14 @@ get' n arr =
 setcode : Cmd Msg
 setcode =
     let
-        l = Random.int 0 <| Array.length codes - 1
-        m = Random.int 0 <| Array.length oss - 1
-        n = Random.int 0 <| Array.length urls - 1
-        v = Random.int 100 999
-        p = Random.int 0 9999
-        g = Random.map5 (,,,,) l m n v p
+        l = int 0 <| Array.length codes - 1
+        m = int 0 <| Array.length oss - 1
+        n = int 0 <| Array.length urls - 1
+        v = int 100 999
+        p = int 0 9999
+        g = map5 (,,,,) l m n v p
     in
-        Random.generate Set g
+        generate Set g
 
 -- subscriptions
 
