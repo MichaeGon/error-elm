@@ -51,7 +51,14 @@ update msg model =
                         |> List.intersperse '.'
                         |> fromList
             in
-                (Model c t s fp name ver p, Cmd.none)
+                ({model
+                    | ecode = c
+                    , etitle = t
+                    , emessage = s
+                    , jumplink = fp
+                    , apache = ver
+                    , os = name
+                    , portNum = p }, Cmd.none)
 
 get' : Int -> Array.Array a -> a
 get' n arr =
