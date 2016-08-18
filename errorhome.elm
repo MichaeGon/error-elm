@@ -34,8 +34,8 @@ type alias Model =
 
 type Msg
     = SetCode Int
-    | Select
-    | Set (List Int)
+    | SetRands (List Int)
+    | Set (Int, Int, Int)
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
@@ -43,18 +43,18 @@ update msg model =
         SetCode n ->
             case Array.get n codes of
                 Just (c, t, m) ->
-                    ({model | ecode = c, etitle = t, emessage = m}, Cmd.none)
+                    let
+                        l = length t
+                        intgen = Random.int Random.minInt Random.maxInt
+                        g = Random.list l intgen
+                    in
+                        ({model | ecode = c, etitle = t, emessage = m}, Random.generate SetRands g)
                 _ ->
                     (model, Cmd.none)
-        Select ->
-            let
-                l = length model.etitle
-                intgen = Random.int Random.minInt Random.maxInt
-                intsgen = Random.list l intgen
-            in
-                (model, Random.generate Set intsgen)
-        Set xs ->
-            ({model | rands = xs}, Cmd.none)
+        SetRands xs ->
+                ({model | rands = xs}, Cmd.none)
+        Set _ ->
+            (model, Cmd.none)
 
 -- cmd setcode
 setcode : Cmd Msg

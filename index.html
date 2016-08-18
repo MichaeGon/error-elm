@@ -8969,8 +8969,8 @@ var _user$project$Error$codes = _elm_lang$core$Array$fromList(
 			{ctor: '_Tuple3', _0: 400, _1: 'Bad Request', _2: 'Your browser (or proxy) sent a request that this server could not understand.'},
 			{ctor: '_Tuple3', _0: 401, _1: 'Unauthorized', _2: 'This server could not verify that you are authorized to access the URL. You either supplied the wrong credentials (e.g., bad password), or your browser doesn\'t understand how to supply the credentials required.'},
 			{ctor: '_Tuple3', _0: 402, _1: 'Payment Required', _2: 'You must give me money.'},
-			{ctor: '_Tuple3', _0: 403, _1: 'Forbidden', _2: 'You don\'t have permission to access index.cgi on this server.'},
-			{ctor: '_Tuple3', _0: 404, _1: 'Not Found', _2: 'The requested URL index.cgi not found on this server.'},
+			{ctor: '_Tuple3', _0: 403, _1: 'Forbidden', _2: 'You don\'t have permission to access index.html on this server.'},
+			{ctor: '_Tuple3', _0: 404, _1: 'Not Found', _2: 'The requested URL index.html not found on this server.'},
 			{ctor: '_Tuple3', _0: 405, _1: 'Method Not Allowed', _2: 'The method is not allowed for the requested URL.'},
 			{ctor: '_Tuple3', _0: 406, _1: 'Not Acceptable', _2: ''},
 			{ctor: '_Tuple3', _0: 407, _1: 'Proxy Authentication Required', _2: ''},
@@ -9085,6 +9085,9 @@ var _user$project$Error$Model = F7(
 var _user$project$Error$Set = function (a) {
 	return {ctor: 'Set', _0: a};
 };
+var _user$project$Error$SetRands = function (a) {
+	return {ctor: 'SetRands', _0: a};
+};
 var _user$project$Error$update = F2(
 	function (msg, model) {
 		var _p1 = msg;
@@ -9092,26 +9095,21 @@ var _user$project$Error$update = F2(
 			case 'SetCode':
 				var _p2 = A2(_elm_lang$core$Array$get, _p1._0, _user$project$Error$codes);
 				if ((_p2.ctor === 'Just') && (_p2._0.ctor === '_Tuple3')) {
+					var _p3 = _p2._0._1;
+					var intgen = A2(_elm_lang$core$Random$int, _elm_lang$core$Random$minInt, _elm_lang$core$Random$maxInt);
+					var l = _elm_lang$core$String$length(_p3);
+					var g = A2(_elm_lang$core$Random$list, l, intgen);
 					return {
 						ctor: '_Tuple2',
 						_0: _elm_lang$core$Native_Utils.update(
 							model,
-							{ecode: _p2._0._0, etitle: _p2._0._1, emessage: _p2._0._2}),
-						_1: _elm_lang$core$Platform_Cmd$none
+							{ecode: _p2._0._0, etitle: _p3, emessage: _p2._0._2}),
+						_1: A2(_elm_lang$core$Random$generate, _user$project$Error$SetRands, g)
 					};
 				} else {
 					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
 				}
-			case 'Select':
-				var intgen = A2(_elm_lang$core$Random$int, _elm_lang$core$Random$minInt, _elm_lang$core$Random$maxInt);
-				var l = _elm_lang$core$String$length(model.etitle);
-				var intsgen = A2(_elm_lang$core$Random$list, l, intgen);
-				return {
-					ctor: '_Tuple2',
-					_0: model,
-					_1: A2(_elm_lang$core$Random$generate, _user$project$Error$Set, intsgen)
-				};
-			default:
+			case 'SetRands':
 				return {
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
@@ -9119,9 +9117,10 @@ var _user$project$Error$update = F2(
 						{rands: _p1._0}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
+			default:
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
 		}
 	});
-var _user$project$Error$Select = {ctor: 'Select'};
 var _user$project$Error$SetCode = function (a) {
 	return {ctor: 'SetCode', _0: a};
 };
