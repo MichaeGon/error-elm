@@ -117,7 +117,7 @@ mkTitle model = model.etitle
         )
 
 bodySecond : Model -> Html Msg
-bodySecond model = div [footerStyle]
+bodySecond model = footer [footerStyle]
     [ text <| "Apache/" ++ model.apache ++ " (" ++ model.os ++ ") Server at michaegon.jp Port " ++ toString model.portNum]
 
 
