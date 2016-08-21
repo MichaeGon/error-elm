@@ -27,4 +27,7 @@ subscriptions : Model -> Sub Msg
 subscriptions _ = Sub.none
 
 view : Model -> Html Msg
-view model = div [] []
+view model = node "meta"
+    [ httpEquiv "refresh"
+    , content "0; URL=https://github.com/MichaeGon/some_scripts"
+    ] []
