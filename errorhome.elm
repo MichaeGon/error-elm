@@ -104,7 +104,7 @@ mkTitle model = model.etitle
     |> toList
     |> List.map (\x ->
         a
-        [ tytleStyle
+        [ titleStyle
         , target "_blank"
         , href "jump.html"
         , onClick Reset
@@ -119,8 +119,8 @@ bodySecond model = footer [footerStyle]
 
 -- styles
 
-tytleStyle : Attribute Msg
-tytleStyle = style
+titleStyle : Attribute Msg
+titleStyle = style
     [ ("text-decoration", "none")
     , ("color", "black")
     ]
