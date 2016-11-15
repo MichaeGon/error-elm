@@ -79,4 +79,5 @@ urls = Array.fromList
     , "https://youtu.be/bp2ZOX-3F_I?autoplay=1"
     , "http://elm-lang.org"
     , "https://www.rust-lang.org/en-US/"
+    , "https://www.youtube.com/watch?v=rLr8swgC3Uo"
     ]
